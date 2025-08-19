@@ -32,7 +32,7 @@ function createContainer() {
 function getPositionFromRange(range: Range) {
   const rect = range.getBoundingClientRect()
   return {
-    x: Math.min(rect.left, window.innerWidth - 340),
+    x: Math.min(rect.left, window.innerWidth - 400), // Use max width for safety
     y: rect.bottom + 5
   }
 }

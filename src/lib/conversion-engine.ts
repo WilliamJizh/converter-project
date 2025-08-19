@@ -277,15 +277,39 @@ export function convertUnit(
 }
 
 export function formatNumber(value: number, decimalPlaces: number = 2): string {
-  if (Math.abs(value) < 0.01 || Math.abs(value) > 1000000) {
+  const absValue = Math.abs(value)
+  const sign = value < 0 ? '-' : ''
+  
+  // Very small numbers - use scientific notation
+  if (absValue > 0 && absValue < 0.01) {
     return value.toExponential(decimalPlaces)
   }
   
-  // Round to specified decimal places
+  // Smart formatting for large numbers with suffixes
+  if (absValue >= 1e12) {
+    return sign + (absValue / 1e12).toFixed(decimalPlaces) + 'T'
+  }
+  if (absValue >= 1e9) {
+    return sign + (absValue / 1e9).toFixed(decimalPlaces) + 'B'
+  }
+  if (absValue >= 1e6) {
+    return sign + (absValue / 1e6).toFixed(decimalPlaces) + 'M'
+  }
+  if (absValue >= 1e4) {
+    // For numbers 10,000 and above, use K suffix
+    return sign + (absValue / 1e3).toFixed(absValue >= 1e5 ? 0 : 1) + 'K'
+  }
+  
+  // For numbers less than 10,000, show normally but without excessive decimals
+  if (absValue >= 100) {
+    // No decimals for hundreds and thousands
+    return Math.round(value).toLocaleString('en-US')
+  }
+  
+  // For smaller numbers, keep some precision
   const multiplier = Math.pow(10, decimalPlaces)
   const rounded = Math.round(value * multiplier) / multiplier
   
-  // Format with commas for thousands
   return rounded.toLocaleString('en-US', {
     minimumFractionDigits: 0,
     maximumFractionDigits: decimalPlaces,

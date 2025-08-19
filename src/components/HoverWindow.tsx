@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from "react"
-import { X, Copy, Check, ChevronDown, ChevronUp } from "lucide-react"
+import { X, Copy, CheckCircle, ChevronDown, ChevronUp } from "lucide-react"
 import { Card, CardContent, CardHeader } from "./ui/card"
 import { Badge } from "./ui/badge"
 import { Button } from "./ui/button"
@@ -110,7 +110,6 @@ export default function HoverWindow({
   const [currentPosition, setCurrentPosition] = useState(position)
   const [isVisible, setIsVisible] = useState(true)
   const [isExpanded, setIsExpanded] = useState(false)
-  const [shouldClose, setShouldClose] = useState(false)
   const cardRef = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
@@ -190,21 +189,15 @@ export default function HoverWindow({
     navigator.clipboard.writeText(value)
     setCopiedIndex(index)
     
-    // Show check mark briefly then close
+    // Close window after showing checkmark
     setTimeout(() => {
-      setShouldClose(true)
-    }, 500)
-    
-    setTimeout(() => {
-      if (shouldClose) {
-        onClose()
-      }
-    }, 600)
+      onClose()
+    }, 400)
   }
 
   // Smart positioning to keep window in viewport
   const adjustedPosition = (() => {
-    const windowWidth = 320
+    const windowWidth = 400 // Use max width for positioning
     const windowHeight = isExpanded ? 400 : 140
     
     // Calculate X position
@@ -234,8 +227,9 @@ export default function HoverWindow({
     <Card 
       ref={cardRef}
       className={cn(
-        "fixed z-[999999] w-80 shadow-lg transition-all duration-200",
+        "fixed z-[999999] shadow-lg transition-all duration-200",
         "border bg-white/95 backdrop-blur supports-[backdrop-filter]:bg-white/90",
+        "min-w-[200px] max-w-[400px] w-fit",
         !isVisible && "opacity-0 pointer-events-none"
       )}
       style={{ 
@@ -271,18 +265,20 @@ export default function HoverWindow({
               variant="outline"
               size="sm"
               className={cn(
-                "h-7 px-2 text-xs font-medium transition-all",
-                copiedIndex === `top-${index}` && "bg-green-50 border-green-300"
+                "h-7 px-2 text-xs font-medium transition-all min-w-fit",
+                copiedIndex === `top-${index}` && "bg-green-50 border-green-500"
               )}
               onClick={() => handleCopy(`${conversion.value} ${conversion.unit}`, `top-${index}`)}
             >
               {copiedIndex === `top-${index}` ? (
-                <Check className="h-3 w-3 text-green-600 mr-1" />
+                <CheckCircle className="h-4 w-4 text-green-500" />
               ) : (
-                <Copy className="h-3 w-3 mr-1 text-muted-foreground" />
+                <>
+                  <Copy className="h-3 w-3 mr-1 text-muted-foreground" />
+                  <span className="font-semibold">{conversion.value}</span>
+                  <span className="ml-1 text-muted-foreground">{conversion.unit}</span>
+                </>
               )}
-              <span className="font-semibold">{conversion.value}</span>
-              <span className="ml-1 text-muted-foreground">{conversion.unit}</span>
             </Button>
           ))}
         </div>
@@ -322,19 +318,21 @@ export default function HoverWindow({
                       variant="ghost"
                       size="sm"
                       className={cn(
-                        "w-full h-7 px-2 justify-between text-xs",
-                        copiedIndex === `remaining-${index}` && "bg-green-50"
+                        "w-full h-7 px-2 justify-between text-xs transition-all",
+                        copiedIndex === `remaining-${index}` && "bg-green-50 hover:bg-green-50 justify-center"
                       )}
                       onClick={() => handleCopy(`${conversion.value} ${conversion.unit}`, `remaining-${index}`)}
                     >
-                      <div className="flex items-center">
-                        <span className="font-medium">{conversion.value}</span>
-                        <span className="ml-1 text-muted-foreground">{conversion.unit}</span>
-                      </div>
                       {copiedIndex === `remaining-${index}` ? (
-                        <Check className="h-3 w-3 text-green-600" />
+                        <CheckCircle className="h-4 w-4 text-green-500" />
                       ) : (
-                        <Copy className="h-3 w-3 text-muted-foreground" />
+                        <>
+                          <div className="flex items-center">
+                            <span className="font-medium">{conversion.value}</span>
+                            <span className="ml-1 text-muted-foreground">{conversion.unit}</span>
+                          </div>
+                          <Copy className="h-3 w-3 text-muted-foreground" />
+                        </>
                       )}
                     </Button>
                   ))}
