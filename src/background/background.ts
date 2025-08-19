@@ -19,14 +19,18 @@ chrome.runtime.onInstalled.addListener((details) => {
 chrome.runtime.onMessage.addListener((request, _sender, sendResponse) => {
   switch (request.type) {
     case 'CONVERT_UNITS':
-      try {
-        const { value, unitType, category } = request
-        const conversions = getConversionsForUnit(value, unitType, category)
-        sendResponse({ conversions })
-      } catch (error) {
-        console.error('Conversion error:', error)
-        sendResponse({ error: 'Conversion failed: ' + (error as Error).message })
-      }
+      // Get favorite units from storage first
+      chrome.storage.sync.get('favoriteUnits', (data) => {
+        try {
+          const { value, unitType, category } = request
+          const favoriteUnits = data.favoriteUnits?.[category]
+          const conversions = getConversionsForUnit(value, unitType, category, favoriteUnits)
+          sendResponse({ conversions })
+        } catch (error) {
+          console.error('Conversion error:', error)
+          sendResponse({ error: 'Conversion failed: ' + (error as Error).message })
+        }
+      })
       break
       
     case 'GET_PREFERENCES':

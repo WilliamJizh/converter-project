@@ -19,7 +19,7 @@ export default defineConfig({
     outDir: 'dist',
     emptyOutDir: false,
     lib: {
-      entry: resolve(__dirname, 'src/content/content-simple.ts'),
+      entry: resolve(__dirname, 'src/content/content.ts'),
       name: 'ContentScript',
       formats: ['iife'],
       fileName: () => 'content.js',
