@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Unit Converter Test Page</title>
+    <style>
+        body {
+            font-family: system-ui, -apple-system, sans-serif;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 20px;
+            line-height: 1.6;
+            background: #f5f5f5;
+        }
+        h1 {
+            color: #333;
+            border-bottom: 2px solid #4a90e2;
+            padding-bottom: 10px;
+        }
+        h2 {
+            color: #555;
+            margin-top: 30px;
+            background: #e8f4f8;
+            padding: 10px;
+            border-left: 4px solid #4a90e2;
+        }
+        .test-section {
+            background: white;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        .unit-example {
+            margin: 10px 0;
+            padding: 10px;
+            background: #fafafa;
+            border-left: 3px solid #4a90e2;
+            font-size: 16px;
+        }
+        .category {
+            color: #666;
+            font-size: 12px;
+            text-transform: uppercase;
+            margin-bottom: 5px;
+        }
+        .note {
+            color: #888;
+            font-style: italic;
+            font-size: 14px;
+            margin-top: 10px;
+        }
+        code {
+            background: #f0f0f0;
+            padding: 2px 6px;
+            border-radius: 3px;
+            font-family: 'Courier New', monospace;
+        }
+    </style>
+</head>
+<body>
+    <h1>🔄 Unit Converter Extension Test Page</h1>
+    <p class="note">Hover over or select any unit value on this page to see the conversion popup. The extension will automatically detect and convert these values.</p>
+
+    <div class="test-section">
+        <h2>📏 Length & Distance</h2>
+        <div class="category">Common Measurements</div>
+        <div class="unit-example">The marathon distance is exactly 42.195 km (or 26.219 miles)</div>
+        <div class="unit-example">My new TV is 55 inches diagonally</div>
+        <div class="unit-example">The room is 12 ft wide and 15 ft long</div>
+        <div class="unit-example">The fabric is 150 cm in length</div>
+        <div class="unit-example">The gap should be 25 mm wide</div>
+        <div class="unit-example">The trail extends for 8.5 miles through the forest</div>
+        <div class="unit-example">The building is 300 meters tall</div>
+        <div class="unit-example">The yard is 50 yd from end to end</div>
+    </div>
+
+    <div class="test-section">
+        <h2>⚖️ Weight & Mass</h2>
+        <div class="category">Everyday Weights</div>
+        <div class="unit-example">The package weighs 2.5 kg</div>
+        <div class="unit-example">Add 250 g of flour to the mixture</div>
+        <div class="unit-example">The baby weighs 8 lb 6 oz</div>
+        <div class="unit-example">This laptop is only 1.2 kg</div>
+        <div class="unit-example">The recipe calls for 16 oz of chocolate</div>
+        <div class="unit-example">The shipment totals 2.5 tons</div>
+        <div class="unit-example">Take 500 mg of vitamin C daily</div>
+        <div class="unit-example">The turkey weighs 15 pounds</div>
+    </div>
+
+    <div class="test-section">
+        <h2>🌡️ Temperature</h2>
+        <div class="category">Weather & Cooking</div>
+        <div class="unit-example">Today's high will be 72°F</div>
+        <div class="unit-example">Water boils at 100°C at sea level</div>
+        <div class="unit-example">Set the oven to 350 °F</div>
+        <div class="unit-example">The CPU is running at 65 celsius</div>
+        <div class="unit-example">Absolute zero is 0 K or -273.15°C</div>
+        <div class="unit-example">Room temperature is about 20°C</div>
+        <div class="unit-example">The freezer is set to -18 °C</div>
+        <div class="unit-example">It's a scorching 40 celsius outside</div>
+    </div>
+
+    <div class="test-section">
+        <h2>🥤 Volume & Capacity</h2>
+        <div class="category">Liquids & Containers</div>
+        <div class="unit-example">The bottle contains 750 ml of wine</div>
+        <div class="unit-example">Add 2 cups of water</div>
+        <div class="unit-example">The tank holds 50 gallons</div>
+        <div class="unit-example">Mix in 250 milliliters of milk</div>
+        <div class="unit-example">The recipe needs 1.5 L of stock</div>
+        <div class="unit-example">Pour 1 pint of cream</div>
+        <div class="unit-example">The jug contains 2 quarts</div>
+        <div class="unit-example">Use 500ml of olive oil</div>
+    </div>
+
+    <div class="test-section">
+        <h2>🚗 Speed & Velocity</h2>
+        <div class="category">Motion & Travel</div>
+        <div class="unit-example">The speed limit is 65 mph on this highway</div>
+        <div class="unit-example">The train travels at 300 km/h</div>
+        <div class="unit-example">Wind speed reached 45 knots</div>
+        <div class="unit-example">The runner maintains 5 m/s</div>
+        <div class="unit-example">The plane cruises at 550 mph</div>
+        <div class="unit-example">Maximum speed is 120 kmh</div>
+        <div class="unit-example">The boat can reach 30 knots</div>
+    </div>
+
+    <div class="test-section">
+        <h2>💾 Digital Storage</h2>
+        <div class="category">Data & Memory</div>
+        <div class="unit-example">The file is 458 MB in size</div>
+        <div class="unit-example">My hard drive has 2 TB of storage</div>
+        <div class="unit-example">The download is 1.5 GB</div>
+        <div class="unit-example">This image is only 256 KB</div>
+        <div class="unit-example">The RAM is 16 gigabytes</div>
+        <div class="unit-example">Cache size is 8192 bytes</div>
+        <div class="unit-example">The video is 4.7GB</div>
+        <div class="unit-example">Network speed is 1000 megabits per second</div>
+    </div>
+
+    <div class="test-section">
+        <h2>⏰ Time Duration</h2>
+        <div class="category">Periods & Durations</div>
+        <div class="unit-example">The meeting lasted 90 minutes</div>
+        <div class="unit-example">Cook for 2.5 hours</div>
+        <div class="unit-example">The project took 14 days to complete</div>
+        <div class="unit-example">Wait 30 seconds before proceeding</div>
+        <div class="unit-example">The warranty is valid for 2 years</div>
+        <div class="unit-example">The event spans 3 weeks</div>
+        <div class="unit-example">Set timer for 45 min</div>
+        <div class="unit-example">The subscription is 6 months long</div>
+    </div>
+
+    <div class="test-section">
+        <h2>📐 Area</h2>
+        <div class="category">Surface Measurements</div>
+        <div class="unit-example">The apartment is 850 ft2</div>
+        <div class="unit-example">The land covers 5 hectares</div>
+        <div class="unit-example">The room is 25 m2</div>
+        <div class="unit-example">The property spans 2.5 acres</div>
+        <div class="unit-example">The park is 3 km2 in area</div>
+        <div class="unit-example">Office space of 1200 square feet</div>
+    </div>
+
+    <div class="test-section">
+        <h2>🔬 Pressure</h2>
+        <div class="category">Force per Area</div>
+        <div class="unit-example">Tire pressure should be 32 PSI</div>
+        <div class="unit-example">Atmospheric pressure is 1013 mbar</div>
+        <div class="unit-example">The system operates at 2.5 bar</div>
+        <div class="unit-example">Standard pressure is 1 atm</div>
+        <div class="unit-example">Blood pressure reading: 120 mmHg</div>
+        <div class="unit-example">The valve can handle 500 pa</div>
+    </div>
+
+    <div class="test-section">
+        <h2>⚡ Energy</h2>
+        <div class="category">Power & Energy</div>
+        <div class="unit-example">The snack contains 250 calories</div>
+        <div class="unit-example">Daily intake should be 2000 kcal</div>
+        <div class="unit-example">The heater uses 1500 BTU</div>
+        <div class="unit-example">Energy consumption: 350 kWh per month</div>
+        <div class="unit-example">The reaction releases 500 joules</div>
+        <div class="unit-example">Power output is 100 J per second</div>
+    </div>
+
+    <div class="test-section">
+        <h2>🔢 Edge Cases & Complex Values</h2>
+        <div class="category">Testing Special Formats</div>
+        <div class="unit-example">The precision measurement is 0.001 mm</div>
+        <div class="unit-example">Distance to the moon: 384,400 km</div>
+        <div class="unit-example">Negative temperature: -40°F (equals -40°C!)</div>
+        <div class="unit-example">Scientific notation: 3.5e6 meters</div>
+        <div class="unit-example">Fractional: 3/4 cup of sugar</div>
+        <div class="unit-example">Mixed: 5 feet 11 inches tall</div>
+        <div class="unit-example">Range: between 20-25 celsius</div>
+        <div class="unit-example">Decimal: 98.6 fahrenheit (body temperature)</div>
+    </div>
+
+    <div class="test-section">
+        <h2>📝 Instructions</h2>
+        <p><strong>How to test:</strong></p>
+        <ol>
+            <li>Make sure the extension is loaded in your browser</li>
+            <li>Simply hover over any numerical value with its unit</li>
+            <li>Or select the text containing the measurement</li>
+            <li>A popup should appear showing conversions to other units</li>
+            <li>Click on any conversion to copy it to your clipboard</li>
+            <li>The new compact design shows top 3 conversions with an expand option</li>
+        </ol>
+        <p class="note">Note: The extension uses smart detection to identify units even when written in different formats (e.g., "km", "kilometers", "kilometre").</p>
+    </div>
+
+    <div class="test-section">
+        <h2>🧪 Test Scenarios</h2>
+        <div class="category">Inline Text Examples</div>
+        <p>The recipe requires exactly <code>225g</code> of butter at room temperature (<code>72°F</code>), and you'll need to bake it for <code>35 minutes</code> in an oven preheated to <code>180°C</code>. The cake tin should be <code>9 inches</code> in diameter.</p>
+        
+        <p>My morning run was <code>5.2 km</code> in <code>28 minutes</code>, giving me an average speed of about <code>11 kmh</code>. I burned approximately <code>350 calories</code> and my heart rate peaked at <code>165 bpm</code>.</p>
+        
+        <p>The new SSD has <code>1TB</code> of storage, much better than my old <code>256GB</code> drive. Transfer speeds reach up to <code>550 MB/s</code> for sequential reads.</p>
+    </div>
+</body>
+</html>
